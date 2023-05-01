@@ -12,5 +12,11 @@ class Entity:
     def get_position(self):
         return self._position
 
+    def get_hp(self):
+        return self._hp
+
     def draw(self, screen):
         pygame.draw.circle(screen, self._color, self._position, self._width)
+
+
+

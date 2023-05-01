@@ -19,3 +19,6 @@ class Player(Entity):
 
     def get_damage(self, power: int):
         self._hp -= power
+
+    def is_alive(self):
+        return self._hp > 0

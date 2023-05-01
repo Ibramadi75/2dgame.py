@@ -30,11 +30,27 @@ while running:
     player1.draw(screen)
     mob1.draw(screen)
 
-    if(mob1.is_contact(player1)):
-        print("player x : ", player1.get_position().x)
-        print("mob : ", mob1.get_position().x)
+    if player1 is not None:
+        if mob1.is_contact(player1):
+            if player1.is_alive():
+                player1.get_damage(mob1.get_power())
+            else:
+                del player1
 
-    player1.movement(dt)
+        player1.movement(dt)
+
+        value = player1.get_hp()
+
+    # Définir les dimensions et la position du texte
+    font_size = 32
+    text_x = 50
+    text_y = 50
+
+    # Créer un objet font
+    font = pygame.font.Font(None, font_size)
+
+    text_surface = font.render(str(value), True, (0, 0, 0), (255, 255, 255))
+    screen.blit(text_surface, (text_x, text_y))
 
     # flip() the display to put your work on screen
     pygame.display.flip()

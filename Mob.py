@@ -9,8 +9,6 @@ class Mob(Entity):
         super().__init__(position, 10, 30, 30, "red")
 
     def is_contact(self, player: Player):
-        contact = False
-
         rayon = self._width * 2
 
         x = int(self._position.x)
@@ -28,3 +26,6 @@ class Mob(Entity):
 
     def attack(self, player: Player):
         player.get_damage(self.__power_attack)
+
+    def get_power(self):
+        return self._hp
