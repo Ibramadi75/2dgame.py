@@ -8,6 +8,7 @@ class Entity:
         self._width = width
         self._height = height
         self._color = color
+        self._is_dead = False
 
     def get_position(self):
         return self._position
@@ -16,7 +17,11 @@ class Entity:
         return self._hp
 
     def draw(self, screen):
-        pygame.draw.circle(screen, self._color, self._position, self._width)
+        if self.is_alive():
+            pygame.draw.circle(screen, self._color, self._position, self._width)
 
-
-
+    def is_alive(self):
+        if self._hp > 0:
+            return True
+        self._is_dead = True
+        return False
