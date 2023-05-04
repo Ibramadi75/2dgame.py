@@ -10,6 +10,7 @@ class Entity:
         self._color = color
         self._is_dead = False
 
+
     def get_position(self):
         return self._position
 
@@ -20,8 +21,12 @@ class Entity:
         if self.is_alive():
             pygame.draw.circle(screen, self._color, self._position, self._width)
 
+    def get_damage(self, power: int):
+        if self.is_alive():
+            self._hp -= power
+
     def is_alive(self):
-        if self._hp > 0:
+        if self._hp > 0 and not self._is_dead :
             return True
         self._is_dead = True
         return False

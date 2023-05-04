@@ -24,6 +24,10 @@ while running:
     # fill the screen with a color to wipe away anything from last frame
     screen.fill("black")
 
+    if not player1.is_alive():
+        player1.respawn()
+
+
     player_pos = player1.get_position()
     mob_pos = mob1.get_position()
 
