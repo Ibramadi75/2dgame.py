@@ -3,7 +3,7 @@ from Player import Player
 
 
 class Mob(Entity):
-    __power_attack = 3
+    __power_attack = 2
 
     def __init__(self, position):
         super().__init__(position, 10, 30, 30, "red")
@@ -28,4 +28,4 @@ class Mob(Entity):
         player.get_damage(self.__power_attack)
 
     def get_power(self):
-        return self._hp
+        return self.__power_attack

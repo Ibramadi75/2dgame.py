@@ -3,13 +3,23 @@ import pygame
 # Classes
 from Player import Player
 from Mob import Mob
+from Map import Map
 
 # pygame setup
 pygame.init()
-screen = pygame.display.set_mode((1280, 720))
+
+map_width = 1220
+map_height = 720
+screen = pygame.display.set_mode((map_width, map_height))
+map1 = Map(screen)
+
+screen = map1.screen
+
 clock = pygame.time.Clock()
 running = True
 dt = 0
+
+start_time = pygame.time.get_ticks()
 
 player1 = Player(pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2))
 mob1 = Mob(pygame.Vector2(screen.get_width() / 6, screen.get_height() / 6))
@@ -25,10 +35,13 @@ while running:
     screen.fill("black")
 
     if not player1.is_alive():
-        player1.respawn()
-
+        player1.respawn(screen)
 
     player_pos = player1.get_position()
+
+#    print("player pos : ", player_pos)
+#    print("default pos : ", player1.get_d_position())
+
     mob_pos = mob1.get_position()
 
     mob1.draw(screen)
