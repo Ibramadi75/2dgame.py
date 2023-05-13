@@ -46,6 +46,7 @@ while running:
 
     mob1.draw(screen)
     player1.draw(screen)
+    map1.map_limit()
 
     if mob1.is_contact(player1):
         player1.get_damage(mob1.get_power())
